@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class Mesto1Test {
 
-    String bearerToken = "сюда_впиши_свой_токен";
+    String bearerToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjJkZGRkMTgyMGZmYzAwM2QxM2M2YTUiLCJpYXQiOjE2NTc0NTUzMzAsImV4cCI6MTY1ODA2MDEzMH0.f5YrmmssSufq3i5m9R66dqRsG5Kja9W4hbDliKdUu5k";
 
     @Before
     public void setUp() {
