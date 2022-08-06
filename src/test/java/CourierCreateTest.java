@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.*;
 
 import static org.junit.Assert.*;
 
-
 public class CourierCreateTest extends BaseTest{
 
     private CourierApi courierApi;
@@ -43,7 +42,8 @@ public class CourierCreateTest extends BaseTest{
     @Test
     @DisplayName("Check status code and message when creating courier without login")
     public void courierCannotBeCreatedWithoutLogin() {
-        Courier courier = new Courier(null, "Testok", "Testok");
+        Courier courier = Courier.getRandom();
+        courier.setLogin(null);
         CourierApi.createCourier(courier)
                 .then().assertThat().statusCode(400)
                 .body("message", equalTo("Недостаточно данных для создания учетной записи"));
@@ -52,7 +52,8 @@ public class CourierCreateTest extends BaseTest{
     @Test
     @DisplayName("Check status code and message when creating courier without password")
     public void courierCannotBeCreatedWithoutPass() {
-        Courier courier = new Courier("Testok123", null, "Testok");
+        Courier courier = Courier.getRandom();
+        courier.setPassword(null);
         CourierApi.createCourier(courier)
                 .then().assertThat().statusCode(400)
                 .body("message", equalTo("Недостаточно данных для создания учетной записи"));
@@ -61,10 +62,10 @@ public class CourierCreateTest extends BaseTest{
     @Test
     @DisplayName("Check status code and message when creating courier without firstName")
     public void courierCannotBeCreatedWithoutFirstName() {
-        Courier courier = new Courier("Testok123", "Testok123", null);
+        Courier courier = Courier.getRandom();
+        courier.setFirstName(null);
         CourierApi.createCourier(courier)
                 .then().assertThat().statusCode(400)
                 .body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
-
 }

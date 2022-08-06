@@ -34,7 +34,6 @@ public class CourierApi {
                 .body(creds)
                 .when()
                 .post(LOGIN);
-//                .then().extract().body().path("id");
     }
 
     public static Response deleteCourier(int courierId) {

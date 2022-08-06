@@ -17,7 +17,6 @@ public class OrderCreateTest extends BaseTest{
     }
 
     private int track;
-
     private List<String> color;
 
     public OrderCreateTest(List<String> color) {
@@ -39,10 +38,9 @@ public class OrderCreateTest extends BaseTest{
     public void createOrderWithDifferentColors() {
         Order order = Order.getDefaultOrder().setColor(color).setDeliveryDateCustom();
         track = OrderApi.createOrder(order)
-                .then().log().all()
+                .then()
                 .assertThat().statusCode(201)
                 .body("track", notNullValue())
                 .extract().path("track");
     }
-
 }

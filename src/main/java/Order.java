@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -28,12 +29,15 @@ public class Order {
         this.comment = comment;
     }
 
+    static Faker faker = new Faker();
+
+
     public static Order getDefaultOrder() {
-        return new Order("Тестик",
-                "Тестовый",
-                "Bolshaya street",
+        return new Order(faker.name().firstName(),
+                faker.name().lastName(),
+                faker.address().streetAddress(),
                 "4",
-                "777777777",
+                faker.phoneNumber().cellPhone(),
                 2,
                 "очень жду самокат!");
     }

@@ -4,8 +4,8 @@ import static io.restassured.RestAssured.given;
 
 public class OrderApi {
 
-    private static final String ROOTY = "/orders";
-    private static final String CANCEL = ROOTY + "/cancel";
+    private static final String ROOT = "/orders";
+    private static final String CANCEL = ROOT + "/cancel";
 
     public static Response createOrder(Order order) {
         return given()
@@ -13,7 +13,7 @@ public class OrderApi {
                 .and()
                 .body(order)
                 .when()
-                .post(ROOTY);
+                .post(ROOT);
     }
 
     public static Response cancelOrder(int track) {
@@ -29,6 +29,6 @@ public class OrderApi {
         return given()
                 .header("Content-Type", "application/json")
                 .when()
-                .get(ROOTY);
+                .get(ROOT);
     }
 }
